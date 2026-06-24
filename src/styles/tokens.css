@@ -1,0 +1,23 @@
+:root {
+  --bg: #ffffff;
+  --text: #494e52;
+  --text-muted: #7a8288;
+  --border: #e9ecef;
+  --border-light: #f2f3f3;
+  --link: #52adc8;
+  --link-hover: #3d8fa8;
+  --masthead-link: #7a8288;
+
+  --font-serif: 'Computer Modern Serif', Georgia, 'Times New Roman', serif;
+  --font-quote-attribution: 'Gloria Hallelujah', cursive;
+
+  --page-max-width: 1280px;
+  --content-max-width: 925px;
+  --sidebar-width: 200px;
+  --font-size-base: 18px;
+  --font-size-table: 0.95em;
+  --font-size-sidebar: 0.95em;
+
+  --space-section: 2rem;
+  --space-block: 1rem;
+}

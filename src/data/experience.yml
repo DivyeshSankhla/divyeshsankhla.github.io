@@ -1,0 +1,36 @@
+usa:
+  - company: University at Buffalo
+    location: Buffalo, NY
+    role: Research Assistant
+    start: Oct. 2025
+    end: Apr. 2026
+    highlights:
+      - Developed Lean4 formal proofs and reusable Mathlib libraries for asymptotic notation, divide-and-conquer algorithms, recurrence relations, and a general Masters Theorem framework.
+      - Formalized algorithm correctness for Merge Sort, Count Inversions, Insertion Sort, Interval Scheduling, Decision Subset Sum, and Optimal Subset Sum.
+      - Strengthened proof-based software development skills through theorem proving, functional programming, algorithm analysis, and formal verification.
+
+india:
+  - company: eInfochips (An Arrow Company)
+    location: Ahmedabad, India
+    role: Embedded Software Engineer
+    start: Aug. 2021
+    end: Dec. 2024
+    highlights:
+      - Implemented ONVIF Server Profile APIs (G/S/T) with gSOAP and Lighttpd, scaling SQLite3-backed user and entitlement data to 1M+ records with WAL mode and schema tuning.
+      - Enhanced 15+ ONVIF APIs and resolved interop gaps for NVR/VMS integration across 5+ camera SKUs (Honeywell, Hanwha).
+      - Delivered OTA firmware update infrastructure for 1,000+ deployed devices with staged downloads, A/B partition switching, rollback recovery, and post-update health monitoring.
+      - Designed low-latency Live555 RTSP and WebRTC streaming paths using multithreaded C++, libdatachannel, Mosquitto signaling, RTP pacing, and jitter buffering.
+      - Engineered a Cloud Video Recorder module with RTSPS push, TLS/digest authentication, event-based recording, and a 30-second local fallback buffer for WAN outages.
+      - Built MQTT-based centralized configuration across 4+ SKUs with schema validation, transactional apply/rollback, and RBAC-style entitlement management.
+      - Refactored large C/C++ legacy firmware modules, consolidating XML/JSON parsers (cJSON/libxml2) and improving maintainability across a 7-person team.
+      - "Awards: Power Trainee Award (2022), Best Team Award (2024), Pat on the Back Award (Duclo)."
+
+  - company: Krossmark Innovations
+    location: Ahmedabad, India
+    role: Sensor Data Monitoring Intern
+    start: Jun. 2020
+    end: Jul. 2020
+    highlights:
+      - Implemented RS485 and UART communication between sensors and a centralized monitoring station across long-range links.
+      - Added packet framing, CRC, and retry logic to reduce dropped readings with buffering for bursty traffic.
+      - Integrated sensor drivers and validated data integrity via test harnesses using oscilloscopes and logic analyzers.

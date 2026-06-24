@@ -1,0 +1,48 @@
+---
+import type { ExperienceEntry } from '../lib/types';
+
+interface Props {
+  title: string;
+  entries: ExperienceEntry[];
+}
+
+const { title, entries } = Astro.props;
+---
+
+<h2 class="section-title" id={title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>{title}</h2>
+<div class="table-wrap">
+  <table class="portfolio-table">
+    <tbody>
+      {
+        entries.map((entry) => (
+          <tr>
+            <td class="col-logo">
+              {entry.logo ? (
+                <img src={entry.logo} alt={`${entry.company} logo`} />
+              ) : (
+                <span class="muted" aria-hidden="true"> </span>
+              )}
+            </td>
+            <td class="col-meta">
+              <strong>{entry.company}</strong>
+              <span class="muted">{entry.location}</span>
+              <br />
+              <span class="muted">
+                {entry.start} – {entry.end}
+              </span>
+              <br />
+              {entry.role}
+            </td>
+            <td class="col-content">
+              <ul>
+                {entry.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

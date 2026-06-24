@@ -1,0 +1,28 @@
+---
+import type { Profile } from '../lib/types';
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+---
+
+<aside class="sidebar" aria-label="Author profile">
+  <img
+    class="sidebar__avatar"
+    src={profile.avatar}
+    alt={`${profile.name} profile photo`}
+    width="150"
+    height="150"
+  />
+  <h2 class="sidebar__name">{profile.name}</h2>
+  <p class="sidebar__bio">{profile.title}</p>
+  <p class="sidebar__location">{profile.location}</p>
+  <p class="sidebar__bio">MS CSE @ University at Buffalo</p>
+  <ul class="sidebar__links">
+    <li><a href={`mailto:${profile.email}`}>Email</a></li>
+    <li><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+  </ul>
+</aside>

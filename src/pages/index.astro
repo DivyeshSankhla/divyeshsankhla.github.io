@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import HeroQuote from '../components/HeroQuote.astro';
+import ExperienceTable from '../components/ExperienceTable.astro';
+import EducationTable from '../components/EducationTable.astro';
+import ProjectSection from '../components/ProjectSection.astro';
+import PublicationTable from '../components/PublicationTable.astro';
+import AwardsList from '../components/AwardsList.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
+import {
+  profile,
+  experience,
+  education,
+  projects,
+  publications,
+  awards,
+  volunteer,
+} from '../lib/loadData';
+---
+
+<BaseLayout profile={profile}>
+  <div class="page">
+    <Sidebar profile={profile} />
+    <main class="main">
+      <HeroQuote text={profile.quote.text} author={profile.quote.author} />
+
+      <section class="about">
+        <h2 class="section-title" id="about-me">About Me</h2>
+        <p>{profile.about}</p>
+        <p class="cv-link">
+          <a href={profile.cv.path} target="_blank" rel="noopener noreferrer">
+            Curriculum Vitae
+          </a>{' '}
+          (last updated: {profile.cv.lastUpdated})
+        </p>
+      </section>
+
+      <ExperienceTable title="Experience (USA)" entries={experience.usa} />
+      <ExperienceTable title="Experience (India)" entries={experience.india} />
+      <EducationTable entries={education} />
+      <ProjectSection categories={projects} />
+      <PublicationTable entries={publications} />
+      <AwardsList awards={awards} volunteer={volunteer} />
+    </main>
+  </div>
+  <ScrollToTop />
+</BaseLayout>

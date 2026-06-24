@@ -1,0 +1,38 @@
+---
+import type { PublicationEntry } from '../lib/types';
+
+interface Props {
+  entries: PublicationEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<h2 class="section-title" id="publications">Publications</h2>
+<div class="table-wrap">
+  <table class="portfolio-table simple-table">
+    <tbody>
+      {
+        entries.map((entry) => (
+          <tr>
+            <td>
+              <strong>{entry.title}</strong>
+              <br />
+              <span class="muted">{entry.venue}</span>
+              <br />
+              <span class="muted">Status: {entry.status}</span>
+              {entry.link && (
+                <>
+                  <br />
+                  <a href={entry.link} target="_blank" rel="noopener noreferrer">
+                    Paper
+                  </a>
+                </>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

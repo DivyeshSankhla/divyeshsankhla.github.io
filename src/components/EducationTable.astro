@@ -1,0 +1,62 @@
+---
+import type { EducationEntry } from '../lib/types';
+
+interface Props {
+  entries: EducationEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<h2 class="section-title" id="education">Education</h2>
+<div class="table-wrap">
+  <table class="portfolio-table">
+    <tbody>
+      {
+        entries.map((entry) => (
+          <tr>
+            <td class="col-logo">
+              {entry.logo ? (
+                <img src={entry.logo} alt={`${entry.school} logo`} />
+              ) : (
+                <span class="muted" aria-hidden="true"> </span>
+              )}
+            </td>
+            <td class="col-meta">
+              <strong>{entry.school}</strong>
+              <span class="muted">{entry.location}</span>
+              <br />
+              <span class="muted">
+                {entry.start} – {entry.end}
+              </span>
+              <br />
+              {entry.degree}
+              {entry.department && (
+                <>
+                  <br />
+                  <span class="muted">{entry.department}</span>
+                </>
+              )}
+              {entry.details && (
+                <>
+                  <br />
+                  {entry.details}
+                </>
+              )}
+              {entry.links && entry.links.length > 0 && (
+                <p class="project-links">
+                  {entry.links.map((link) => (
+                    <a href={link.url} target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                    </a>
+                  ))}
+                </p>
+              )}
+            </td>
+            <td class="col-content" />
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

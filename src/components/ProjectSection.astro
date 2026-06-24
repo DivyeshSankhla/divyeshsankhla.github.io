@@ -1,0 +1,51 @@
+---
+import type { ProjectCategory } from '../lib/types';
+
+interface Props {
+  categories: ProjectCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<h2 class="section-title" id="projects">Projects</h2>
+{
+  categories.map((category) => (
+    <>
+      <h3 class="subsection-title">{category.name}</h3>
+      <div class="table-wrap">
+        <table class="portfolio-table">
+          <tbody>
+            {category.projects.map((project) => (
+              <tr>
+                <td class="col-logo" />
+                <td class="col-meta">
+                  <strong>{project.title}</strong>
+                  <br />
+                  <span class="muted">{project.org}</span>
+                  {project.links && project.links.length > 0 && (
+                    <p class="project-links">
+                      {project.links.map((link) => (
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.label}
+                        </a>
+                      ))}
+                    </p>
+                  )}
+                </td>
+                <td class="col-content">
+                  <span class="project-tech">{project.tech}</span>
+                  <ul>
+                    {project.highlights.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  ))
+}

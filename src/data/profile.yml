@@ -1,0 +1,25 @@
+name: Divyesh Sankhla
+title: Embedded Software Engineer
+location: Buffalo, NY
+email: divyeshsankhla@gmail.com
+phone: "+1 716-247-3926"
+github: https://github.com/divyeshsankhla
+linkedin: https://linkedin.com/in/divyeshsankhla
+avatar: /images/profile.svg
+quote:
+  text: "What I cannot create, I do not understand."
+  author: Richard Feynman
+about: >
+  Hello there! Thank you for visiting my website. I'm an embedded software engineer
+  with 3+ years of experience building Linux-based camera firmware and low-latency
+  streaming systems at scale. I've worked on ONVIF-compliant IP cameras, OTA update
+  pipelines, secure media transport (RTSP/RTSPS/WebRTC), and resilient cloud recording
+  services for Honeywell and Hanwha platforms across 5+ SKUs. I'm comfortable across
+  the stack — C/C++ on embedded Linux, multithreading and synchronization, ROS-based
+  robotics, and protocol work from UART/SPI up to MQTT over TLS. I'm now pursuing my
+  MS in Computer Science at the University at Buffalo, deepening my systems and formal
+  methods background. If you'd like to see my work, browse the sections below. Feel
+  free to reach out by email.
+cv:
+  path: /files/cv.pdf
+  lastUpdated: June 2025
