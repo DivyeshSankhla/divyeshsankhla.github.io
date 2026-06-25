@@ -24,4 +24,4 @@ export const education = loadYaml<EducationEntry[]>('education.yml');
 export const projects = loadYaml<ProjectCategory[]>('projects.yml');
 export const publications = loadYaml<PublicationEntry[]>('publications.yml');
 export const awards = loadYaml<AwardEntry[]>('awards.yml');
-export const volunteer = loadYaml<VolunteerEntry[]>('volunteer.yml');
+export const volunteer = loadYaml<VolunteerEntry>('volunteer.yml');

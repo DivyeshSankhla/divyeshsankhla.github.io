@@ -6,11 +6,24 @@ interface Props {
 }
 
 const { categories } = Astro.props;
+
+const tierOrder = { featured: 0, production: 1, academic: 2, other: 3 };
+
+function sortProjects(categories: ProjectCategory[]) {
+  return categories.map((category) => ({
+    ...category,
+    projects: [...category.projects].sort(
+      (a, b) => tierOrder[a.tier] - tierOrder[b.tier],
+    ),
+  }));
+}
+
+const sortedCategories = sortProjects(categories);
 ---
 
 <h2 class="section-title" id="projects">Projects</h2>
 {
-  categories.map((category) => (
+  sortedCategories.map((category) => (
     <>
       <h3 class="subsection-title">{category.name}</h3>
       <div class="table-wrap">
@@ -18,7 +31,6 @@ const { categories } = Astro.props;
           <tbody>
             {category.projects.map((project) => (
               <tr>
-                <td class="col-logo" />
                 <td class="col-meta">
                   <strong>{project.title}</strong>
                   <br />
@@ -34,12 +46,18 @@ const { categories } = Astro.props;
                   )}
                 </td>
                 <td class="col-content">
-                  <span class="project-tech">{project.tech}</span>
-                  <ul>
-                    {project.highlights.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
+                  {project.context && (
+                    <p class="project-context">{project.context}</p>
+                  )}
+                  <p class="project-summary">{project.summary}</p>
+                  <span class="project-tech">{project.tech.join(', ')}</span>
+                  {project.highlights.length > 0 && (
+                    <ul>
+                      {project.highlights.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  )}
                 </td>
               </tr>
             ))}

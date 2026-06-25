@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { title, description, profile } = Astro.props;
-const pageTitle = title ? `${title} — ${profile.name}` : profile.name;
-const pageDescription = description ?? profile.about.slice(0, 160);
+const pageTitle = title ? `${title} | ${profile.name}` : profile.name;
+const pageDescription = description ?? profile.about[0]?.slice(0, 160) ?? '';
 ---
 
 <!doctype html>

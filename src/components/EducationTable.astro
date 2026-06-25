@@ -10,39 +10,37 @@ const { entries } = Astro.props;
 
 <h2 class="section-title" id="education">Education</h2>
 <div class="table-wrap">
-  <table class="portfolio-table">
+  <table class="portfolio-table portfolio-table--experience">
     <tbody>
       {
         entries.map((entry) => (
           <tr>
-            <td class="col-logo">
-              {entry.logo ? (
-                <img src={entry.logo} alt={`${entry.school} logo`} />
-              ) : (
-                <span class="muted" aria-hidden="true"> </span>
-              )}
-            </td>
             <td class="col-meta">
-              <strong>{entry.school}</strong>
-              <span class="muted">{entry.location}</span>
-              <br />
-              <span class="muted">
-                {entry.start} – {entry.end}
-              </span>
-              <br />
-              {entry.degree}
-              {entry.department && (
-                <>
-                  <br />
-                  <span class="muted">{entry.department}</span>
-                </>
-              )}
-              {entry.details && (
-                <>
-                  <br />
-                  {entry.details}
-                </>
-              )}
+              <div class="org-card org-card--education">
+                {entry.logo && (
+                  <img
+                    class="org-logo"
+                    src={entry.logo}
+                    alt=""
+                    width="88"
+                    height="72"
+                  />
+                )}
+                <strong class="org-name">{entry.school}</strong>
+                <span class="org-location">{entry.location}</span>
+                <div class="org-role-block">
+                  <span class="org-dates">
+                    {entry.start} – {entry.end}
+                  </span>
+                  <span class="org-role">{entry.degree}</span>
+                  {entry.department && (
+                    <span class="org-detail">{entry.department}</span>
+                  )}
+                </div>
+              </div>
+            </td>
+            <td class="col-content">
+              {entry.details && <p class="role-summary">{entry.details}</p>}
               {entry.links && entry.links.length > 0 && (
                 <p class="project-links">
                   {entry.links.map((link) => (
@@ -53,7 +51,6 @@ const { entries } = Astro.props;
                 </p>
               )}
             </td>
-            <td class="col-content" />
           </tr>
         ))
       }

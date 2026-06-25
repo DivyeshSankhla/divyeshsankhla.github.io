@@ -1,0 +1,76 @@
+---
+import type { AwardEntry, PublicationEntry, VolunteerEntry } from '../lib/types';
+
+interface Props {
+  awards: AwardEntry[];
+  publications: PublicationEntry[];
+  volunteer: VolunteerEntry;
+}
+
+const { awards, publications, volunteer } = Astro.props;
+---
+
+<h2 class="section-title" id="recognition">Recognition</h2>
+
+<h3 class="subsection-title">Honors and Awards</h3>
+<div class="table-wrap">
+  <table class="portfolio-table simple-table">
+    <tbody>
+      {
+        awards.map((award) => (
+          <tr>
+            <td>
+              🏆 {award.title}
+              {award.detail && (
+                <>
+                  <br />
+                  <span class="muted">{award.detail}</span>
+                </>
+              )}
+              {award.link && (
+                <>
+                  <br />
+                  <a href={award.link} target="_blank" rel="noopener noreferrer">
+                    Certificate
+                  </a>
+                </>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<h3 class="subsection-title">Publications</h3>
+<div class="table-wrap">
+  <table class="portfolio-table simple-table">
+    <tbody>
+      {
+        publications.map((entry) => (
+          <tr>
+            <td>
+              <strong>{entry.title}</strong>
+              <br />
+              <span class="muted">{entry.venue}</span>
+              <br />
+              <span class="muted">Status: {entry.status}</span>
+              {entry.link && (
+                <>
+                  <br />
+                  <a href={entry.link} target="_blank" rel="noopener noreferrer">
+                    Paper
+                  </a>
+                </>
+              )}
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<h3 class="subsection-title">Community</h3>
+<p class="role-summary">{volunteer.summary}</p>

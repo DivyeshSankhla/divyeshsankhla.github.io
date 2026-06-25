@@ -1,6 +1,7 @@
 export interface Profile {
   name: string;
   title: string;
+  tagline?: string;
   location: string;
   email: string;
   phone: string;
@@ -8,8 +9,15 @@ export interface Profile {
   linkedin: string;
   avatar: string;
   quote: { text: string; author: string };
-  about: string;
+  about: string[];
   cv: { path: string; lastUpdated: string };
+}
+
+export type ProjectTier = 'featured' | 'production' | 'academic' | 'other';
+
+export interface ExperienceProjectSummary {
+  title: string;
+  summary: string;
 }
 
 export interface ExperienceEntry {
@@ -19,13 +27,11 @@ export interface ExperienceEntry {
   start: string;
   end: string;
   logo?: string;
-  highlights: string[];
+  projectSummaries: ExperienceProjectSummary[];
+  relatedProjects?: string[];
 }
 
-export interface ExperienceData {
-  usa: ExperienceEntry[];
-  india: ExperienceEntry[];
-}
+export type ExperienceData = ExperienceEntry[];
 
 export interface EducationEntry {
   school: string;
@@ -40,9 +46,13 @@ export interface EducationEntry {
 }
 
 export interface ProjectEntry {
+  slug?: string;
   title: string;
   org: string;
-  tech: string;
+  context?: string;
+  summary: string;
+  tier: ProjectTier;
+  tech: string[];
   highlights: string[];
   links?: { label: string; url: string }[];
 }
@@ -67,5 +77,5 @@ export interface AwardEntry {
 }
 
 export interface VolunteerEntry {
-  text: string;
+  summary: string;
 }

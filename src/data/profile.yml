@@ -9,17 +9,26 @@ avatar: /images/profile.svg
 quote:
   text: "What I cannot create, I do not understand."
   author: Richard Feynman
-about: >
-  Hello there! Thank you for visiting my website. I'm an embedded software engineer
-  with 3+ years of experience building Linux-based camera firmware and low-latency
-  streaming systems at scale. I've worked on ONVIF-compliant IP cameras, OTA update
-  pipelines, secure media transport (RTSP/RTSPS/WebRTC), and resilient cloud recording
-  services for Honeywell and Hanwha platforms across 5+ SKUs. I'm comfortable across
-  the stack — C/C++ on embedded Linux, multithreading and synchronization, ROS-based
-  robotics, and protocol work from UART/SPI up to MQTT over TLS. I'm now pursuing my
-  MS in Computer Science at the University at Buffalo, deepening my systems and formal
-  methods background. If you'd like to see my work, browse the sections below. Feel
-  free to reach out by email.
+about:
+  - >
+    Hello there, and thanks for stopping by. I work on embedded Linux where software
+    actually meets hardware: tracing a board from early boot through to a stable
+    userspace, shaping how peripherals show up to applications, and keeping
+    protocol-heavy services honest when the network is messy.
+  - >
+    At eInfochips I spent three years on production IP camera firmware. That covered
+    multithreaded C/C++ services, fleet OTA with rollback across 1,000+ deployed
+    devices, and live paths over ONVIF, RTSP, and WebRTC. When a stream glitched or
+    a socket misbehaved, I was usually in gdb, dmesg, or a Wireshark trace before
+    trusting another log line.
+  - >
+    I'm at the University at Buffalo now (MS CSE), filling in the theory side through
+    operating systems coursework and formal verification research. On my own time I've
+    also been climbing down the stack: following reset-to-kernel boot in QEMU, building
+    Linux drivers that wire peripherals into userspace, working through scheduling and
+    syscalls in the Pintos kernel, and getting Zephyr threads and ISRs to cooperate
+    without surprises. The sections below cover both shipped production work and that
+    systems-level practice. Happy to talk if any of it lines up with what you're building.
 cv:
   path: /files/cv.pdf
   lastUpdated: June 2025

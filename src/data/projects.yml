@@ -1,144 +1,283 @@
-- name: Embedded & Firmware
+- name: Embedded & Firmware Projects
   projects:
-    - title: ONVIF Camera Firmware Platform
-      org: eInfochips / Honeywell
-      tech: C, C++, gSOAP, Lighttpd, SQLite3, ONVIF G/S/T
-      highlights:
-        - Implemented ONVIF Server Profile APIs with gSOAP and Lighttpd for interop with ONVIF NVR/VMS across 5+ SKUs.
-        - Scaled SQLite3-backed user and entitlement data to 1M+ records using WAL mode, indices, and safer migrations.
-        - Built WebSocket access for tunneled HTTP requests to device services with auth and rate limiting.
-        - Led repository refactoring, consolidating XML/JSON parsers and reducing defect surface across a 7-person team.
-
-    - title: OTA Firmware Update Infrastructure
+    - slug: webrtc-streaming
+      title: Low-Latency WebRTC Streaming
       org: eInfochips
-      tech: C, C++, Linux, SQLite3, Embedded Linux
+      context: Investor demo at risk after corrupted H.264 frames on multi-client live view
+      summary: >
+        Rebuilt RTP packetization and session handling so one camera could serve multiple
+        WebRTC viewers reliably under time pressure.
+      tier: featured
+      tech:
+        - WebRTC
+        - RTP
+        - H.264
+        - Live555
+        - libdatachannel
+        - STUN/TURN
       highlights:
-        - Integrated OTA update flow with integrity checks, staged downloads, version gating, and rollback strategy.
-        - Supported 1,000+ devices in the field with bandwidth-aware chunking and post-update health checks.
-        - Upgraded SQLite3 schema and migrations around OTA/version metadata with durable logging for auditability.
+        - Reduced decoder frame drops to zero after fixing FU-A fragmentation logic traced with Wireshark.
+        - Replaced global streaming state with per-client sessions for concurrent live viewers.
+        - Tuned jitter buffers and RTP pacing for stable playback over lossy WAN paths.
 
-    - title: RTSP/WebRTC Streaming Module
-      org: eInfochips / Duclo
-      tech: C++, Live555, WebRTC, libdatachannel, Mosquitto, RTP, TLS
+    - slug: ota-firmware
+      title: Fleet OTA Firmware Infrastructure
+      org: eInfochips
+      context: Field cameras needed safe, recoverable updates across a growing deployed fleet
+      summary: >
+        Shipped staged OTA with verification and rollback so 1,000+ production cameras could
+        update without bricking.
+      tier: featured
+      tech:
+        - C
+        - C++
+        - Embedded Linux
+        - SQLite3
+        - A/B partitions
       highlights:
-        - Designed Live555-based RTSP pipeline and WebRTC streaming path with multithreaded C++ and lock-aware queues.
-        - Tuned buffer sizes, RTP pacing, and jitter control for cross-region streaming with TLS/digest authentication.
-        - Implemented multi-client live streaming with per-request object structures replacing global state.
-        - Fixed critical RTP/FU-A fragmentation bug that caused corrupted frames before an investor demo.
+        - Designed staged downloads, checksum validation, version gating, and post-update health checks.
+        - Added A/B partition switching and automated rollback on failed updates.
+        - Upgraded SQLite3 schemas and durable audit logs for fleet-wide rollout visibility.
 
-    - title: Cloud Video Recorder (RTSPS Push)
-      org: eInfochips / Duclo
-      tech: C++, RTSPS, TLS, OpenSSL, RTSP, Threads, Queues
+    - slug: cloud-video-recorder
+      title: Cloud Video Recorder
+      org: eInfochips
+      context: Cloud recording had to survive WAN blips without losing security-sensitive events
+      summary: >
+        Built RTSPS push from edge to cloud with encrypted transport, local buffering, and
+        entitlement-aware access across product lines.
+      tier: featured
+      tech:
+        - C++
+        - RTSPS
+        - TLS
+        - MQTT
+        - OpenSSL
       highlights:
-        - Engineered RTSPS push from edge to cloud recorder with event-based recording and pre/post buffers.
-        - Added digest/TLS auth, backpressure, retry with exponential backoff, and event indexing with retention policies.
-        - Built 30-second local fallback buffer to bridge transient WAN failures and reduce missed events.
+        - Engineered event-based recording with pre/post buffers and a 30-second local fallback during outages.
+        - Collaborated with the cloud team on protocol, security, and timestamp handling for CVR ingest.
+        - Integrated MQTT-based fleet configuration and RBAC-style entitlements across 5+ feature domains.
 
-    - title: MQTT Centralized Configuration Manager
-      org: eInfochips / Hanwha
-      tech: C, C++, MQTT, Mosquitto, JSON, XML
+    - slug: onvif-platform
+      title: ONVIF Camera Platform
+      org: eInfochips
+      context: Third-party NVRs exposed edge-case API failures during certification cycles
+      summary: >
+        Hardened ONVIF G/S/T services and device APIs so 5+ camera SKUs interoperated cleanly
+        with major NVR/VMS suites.
+      tier: featured
+      tech:
+        - C
+        - C++
+        - gSOAP
+        - Lighttpd
+        - SQLite3
+        - ONVIF
       highlights:
-        - Built MQTT-based centralized settings to fan out configuration to 4+ SKUs with schema validation.
-        - Designed transactional apply/rollback on failure with synchronized state updates and persistent storage.
+        - Enhanced 15+ ONVIF/WebSocket APIs with POSIX-threaded request handling and NVR integration fixes.
+        - Scaled SQLite3-backed user and entitlement data to 1M+ records using WAL mode and tuned indices.
+        - Consolidated XML/JSON utilities to cut config-related defects across a 7-person firmware team.
 
-    - title: Entitlement Manager & Event Intelligence
-      org: eInfochips / Duclo
-      tech: C, C++, MQTT, JSON, XML, SQLite3
+    - slug: multi-sensor-refactor
+      title: Multi-Sensor Camera Architecture
+      org: eInfochips
+      context: Three camera series had diverged codepaths that slowed every new SKU integration
+      summary: >
+        Merged multi-series firmware into a shared, sensor-indexed architecture that made new
+        models faster to ship and easier to maintain.
+      tier: featured
+      tech:
+        - C
+        - C++
+        - SQLite3
+        - Embedded Linux
       highlights:
-        - Implemented RBAC-style entitlement logic across 5+ feature domains (live view, playback, CVR, analytics, export).
-        - Built event manager normalizing device-side events and publishing to cloud for NLP-based event search downstream.
-        - Designed lightweight XML-to-JSON parser and event subscription model with subscriber management and keepalive.
+        - Refactored settings, database access, and API routing around per-sensor indices instead of hard-coded series logic.
+        - Completed a major port on an aggressive timeline.
 
-    - title: Linux Kernel Modules & Character Drivers
-      org: Academic / Personal
-      tech: C, Linux Kernel, QEMU, ioctl, Device Tree
+    - slug: mqtt-config
+      title: MQTT Fleet Configuration
+      org: eInfochips
+      summary: >
+        Centralized device settings over MQTT so cloud apps could push validated configuration
+        to 4+ SKUs with transactional rollback on failure.
+      tier: production
+      tech:
+        - MQTT
+        - Mosquitto
+        - C
+        - C++
+        - JSON
       highlights:
-        - Built and debugged Linux kernel modules and character/platform drivers with file operations and dynamic device numbers.
-        - Implemented interrupt handling, deferred work, mutex/spinlock synchronization, and Device Tree platform-driver integration.
-        - Debugged kernel crashes and race conditions using dmesg, ftrace, and dynamic debug.
+        - Added schema validation, persistent storage, and synchronized state updates across product lines.
+        - Reduced misconfiguration incidents by making failed applies atomic rather than partial.
 
-    - title: U-Boot Bootloader Bring-Up
-      org: Academic / Personal
-      tech: C, U-Boot, QEMU, Device Tree, Linux
+    - slug: event-intelligence
+      title: Event Intelligence Pipeline
+      org: eInfochips
+      summary: >
+        Normalized motion and analytics events on-camera and published structured payloads for
+        downstream cloud search and NLP-based event discovery.
+      tier: production
+      tech:
+        - C
+        - C++
+        - JSON
+        - XML
+        - MQTT
       highlights:
-        - Built and customized U-Boot from source in QEMU, booted Linux through U-Boot, and documented reset-to-kernel handoff.
-        - Implemented custom U-Boot command, modified boot arguments, and debugged early boot failures.
+        - Built a lightweight XML-to-JSON path and subscriber model with filtering and keepalive tuning.
+        - Enabled cloud teams to index device events without re-parsing legacy XML at scale.
 
-    - title: Zephyr RTOS GPIO/I2C Driver
-      org: Academic / Personal
-      tech: C, Zephyr RTOS, Device Tree, GPIO, I2C
-      highlights:
-        - Developed Zephyr RTOS applications with multiple threads, priorities, and scheduling analysis.
-        - Implemented custom GPIO/I2C driver structure using DEVICE_DT_DEFINE with ISR-safe deferred processing via work queues.
-
-- name: Systems & OS
+- name: Systems & OS Projects
   projects:
-    - title: Pintos Operating System Kernel
+    - slug: pintos-kernel
+      title: Pintos Operating System Kernel
       org: University at Buffalo
-      tech: C, Operating Systems, Synchronization, Scheduling
+      summary: >
+        Extended the Pintos teaching kernel with scheduling, synchronization, and user-program
+        support grounded in real concurrency pitfalls.
+      tier: academic
+      tech:
+        - C
+        - Operating Systems
+        - Scheduling
+        - Synchronization
       highlights:
-        - Implemented alarm clock, priority scheduling with priority donation, and advanced scheduler using CPU load average.
-        - Built system call handlers for file I/O, exec/wait/exit, argument passing, and safe user-kernel memory transitions.
-        - Debugged low-level concurrency, synchronization primitives, and memory-protection behavior in kernel C.
+        - Implemented alarm clock, priority donation, and 4.4BSD-style MLFQS scheduling.
+        - Built system calls, ELF loading, file I/O, exec/wait, and safe user-memory access paths.
 
-    - title: TCP Socket Chat Application
-      org: Personal Project
-      tech: C, TCP Sockets, select(), POSIX
+    - slug: linux-drivers
+      title: Linux Kernel and Driver Development
+      org: Personal
+      summary: >
+        Built and debugged character and platform drivers to connect userspace tooling with
+        kernel interrupt and memory concepts.
+      tier: academic
+      tech:
+        - C
+        - Linux Kernel
+        - Device Tree
+        - QEMU
+        - ioctl
       highlights:
-        - Built a single-threaded TCP client-server chat application with login, direct messaging, broadcast, and offline buffering.
-        - Implemented select()-based I/O multiplexing, message framing, client state machines, and CLI command handling.
+        - Developed /dev interfaces with ioctl, poll/select, IRQ handling, deferred work, and wait queues.
+        - Strengthened driver concepts around DMA, IOVA, IOMMU, cache coherency, and module lifecycle debugging.
 
-- name: Robotics & Perception
+    - slug: uboot-bringup
+      title: U-Boot Bootloader Bring-Up
+      org: Personal
+      summary: >
+        Traced and customized the reset-to-kernel path in QEMU to make early boot failures
+        diagnosable instead of opaque.
+      tier: academic
+      tech:
+        - C
+        - U-Boot
+        - QEMU
+        - Device Tree
+      highlights:
+        - Added a custom board command, tuned bootargs, and staged kernel/Device Tree/initrd images.
+        - Documented memory layout and handoff behavior using bdinfo and boot logs.
+
+    - slug: zephyr-rtos
+      title: Zephyr RTOS Firmware and Drivers
+      org: Personal
+      summary: >
+        Prototyped multithreaded Zephyr firmware with GPIO/I2C drivers and ISR-safe deferred
+        processing patterns.
+      tier: academic
+      tech:
+        - C
+        - Zephyr RTOS
+        - Device Tree
+        - GPIO
+        - I2C
+      highlights:
+        - Used DEVICE_DT_DEFINE bindings with priority-based scheduling and timing analysis.
+        - Measured interrupt-to-deferred-work latency and basic sleep/wakeup power behavior.
+
+- name: Robotics Projects
   projects:
-    - title: Autonomous Underwater Vehicle (AUV)
+    - slug: auv
+      title: Autonomous Underwater Vehicle
       org: Nirma University
-      tech: ROS, C++, Python, OpenCV, CUDA, Jetson TX2, PID
+      summary: >
+        Led software for a university AUV with ROS perception, Jetson TX2 compute, and thruster
+        control under real underwater constraints.
+      tier: other
+      tech:
+        - ROS
+        - OpenCV
+        - CUDA
+        - Jetson TX2
+        - PID
       highlights:
-        - Led software development for fully autonomous underwater navigation using sensor fusion and CV pipelines on Jetson TX2.
-        - Built ROS pub/sub graph integrating camera, IMU, and pressure sensors with PID thruster control and failsafe states.
-        - Achieved ~90% detection accuracy and up to ~15× CUDA speedup vs. CPU-only vision processing.
-        - Role included ROS node orchestration, CV & control integration, and bench tank test planning.
+        - Achieved ~90% vision detection accuracy and up to ~15× CUDA speedup on representative frames.
+        - Integrated camera, IMU, and pressure sensing with failsafe states for bench-tank missions.
 
-    - title: Navigation Using Drone
+    - slug: drone-navigation
+      title: Drone Navigation with On-Board CV
       org: Nirma University
-      tech: ROS, OpenCV, Python, C++, Raspberry Pi, PID
+      summary: >
+        Built a Raspberry Pi navigation stack that closed the loop from frames to roll/pitch
+        stabilization in real time.
+      tier: other
+      tech:
+        - ROS
+        - OpenCV
+        - Python
+        - Raspberry Pi
+        - PID
       highlights:
-        - Built ROS nodes for frame capture, CV processing, and direction messages with on-board Raspberry Pi compute.
-        - Tuned PID loops for roll/pitch stabilization with safety interlocks for real-time image-based navigation.
+        - Tuned PID loops and safety interlocks for image-based heading control on constrained hardware.
 
-- name: Data & ML
+- name: Data & ML Projects
   projects:
-    - title: Digital Well-being Data Analysis
+    - slug: digital-wellbeing
+      title: Digital Well-Being Data Analysis
       org: University at Buffalo
-      tech: Python, pandas, scikit-learn, XGBoost, SVM, K-Means
+      summary: >
+        Explored how screen-time patterns relate to sleep and health signals across 300K+
+        digital-wellness records.
+      tier: other
+      tech:
+        - Python
+        - pandas
+        - scikit-learn
+        - XGBoost
       highlights:
-        - Analyzed 300K+ social media/digital wellness records investigating screen time, sleep quality, and health indicators.
-        - Built models using XGBoost, SVM, MLP, Logistic Regression, Decision Trees, Stacking, and K-Means clustering.
-        - Found prolonged screen time correlates with poorer health; physical exercise moderates adverse effects.
+        - Modeled outcomes with ensemble and clustering methods; physical exercise moderated several negative correlations.
 
-    - title: Lean4 Formal Verification Framework
+    - slug: lean4-research
+      title: Lean4 Formal Verification
       org: University at Buffalo
-      tech: Lean4, Mathlib, Formal Verification, Algorithms
+      summary: >
+        Formalized algorithm correctness proofs in Lean4 for divide-and-conquer,
+        dynamic-programming, and greedy algorithms, turning recurrence-heavy arguments
+        into reusable Mathlib libraries.
+      tier: other
+      tech:
+        - Lean4
+        - Mathlib
+        - Formal Verification
       highlights:
-        - Developed formal proofs for asymptotic notation, recurrence relations, and Masters Theorem framework.
-        - Formalized correctness of Merge Sort, Count Inversions, Interval Scheduling, and dynamic programming algorithms.
+        - Covered divide-and-conquer algorithms, Masters Theorem framing, and proofs for Merge Sort and dynamic-programming classics.
 
-- name: Hardware & Digital Design
+- name: Hardware Projects
   projects:
-    - title: 16-bit RISC Processor
+    - slug: digital-design
+      title: Digital Design Projects
       org: Nirma University
-      tech: Verilog, Quartus, ModelSim
+      summary: >
+        Early hardware projects spanning a 16-bit RISC core, FIFO memory, and a doorway
+        person-counter prototype.
+      tier: other
+      tech:
+        - Verilog
+        - Quartus
+        - Embedded C
+        - IR sensors
       highlights:
-        - Designed ISA, datapath, control unit, ALU, registers, and memory with test benches and waveform debugging.
-
-    - title: Person Counting Device
-      org: Nirma University
-      tech: IR Sensors, Embedded C, GPIO
-      highlights:
-        - Built doorway person counter using two IR sensors with edge detection to infer entry vs. exit direction and debounce logic.
-
-    - title: FIFO Memory
-      org: Nirma University
-      tech: Verilog, Quartus
-      highlights:
-        - Implemented parameterized FIFO with full/empty flags, timing validation, and simulation.
+        - Designed ISA, datapath, and control for a 16-bit processor with test-bench validation.
+        - Built parameterized FIFO blocks and a two-sensor entry/exit counter with debounce logic.

@@ -5,8 +5,7 @@ import HeroQuote from '../components/HeroQuote.astro';
 import ExperienceTable from '../components/ExperienceTable.astro';
 import EducationTable from '../components/EducationTable.astro';
 import ProjectSection from '../components/ProjectSection.astro';
-import PublicationTable from '../components/PublicationTable.astro';
-import AwardsList from '../components/AwardsList.astro';
+import Recognition from '../components/Recognition.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import {
   profile,
@@ -27,21 +26,20 @@ import {
 
       <section class="about">
         <h2 class="section-title" id="about-me">About Me</h2>
-        <p>{profile.about}</p>
-        <p class="cv-link">
-          <a href={profile.cv.path} target="_blank" rel="noopener noreferrer">
-            Curriculum Vitae
-          </a>{' '}
-          (last updated: {profile.cv.lastUpdated})
-        </p>
+        {profile.about.map((paragraph) => <p>{paragraph}</p>)}
       </section>
 
-      <ExperienceTable title="Experience (USA)" entries={experience.usa} />
-      <ExperienceTable title="Experience (India)" entries={experience.india} />
+      <ExperienceTable entries={experience} />
       <EducationTable entries={education} />
       <ProjectSection categories={projects} />
-      <PublicationTable entries={publications} />
-      <AwardsList awards={awards} volunteer={volunteer} />
+      <Recognition awards={awards} publications={publications} volunteer={volunteer} />
+
+      <p class="cv-link">
+        <a href={profile.cv.path} target="_blank" rel="noopener noreferrer">
+          Curriculum Vitae
+        </a>{' '}
+        (last updated: {profile.cv.lastUpdated})
+      </p>
     </main>
   </div>
   <ScrollToTop />
