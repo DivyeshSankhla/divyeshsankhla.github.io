@@ -1,133 +1,90 @@
 - name: Embedded & Firmware Projects
   projects:
-    - slug: webrtc-streaming
-      title: Low-Latency WebRTC Streaming
+    - slug: linux-ip-camera-firmware
+      title: Linux IP Camera Firmware Platform
       org: eInfochips
-      context: Investor demo at risk after corrupted H.264 frames on multi-client live view
-      summary: >
-        Rebuilt RTP packetization and session handling so one camera could serve multiple
-        WebRTC viewers reliably under time pressure.
-      tier: featured
-      tech:
-        - WebRTC
-        - RTP
-        - H.264
-        - Live555
-        - libdatachannel
-        - STUN/TURN
-      highlights:
-        - Reduced decoder frame drops to zero after fixing FU-A fragmentation logic traced with Wireshark.
-        - Replaced global streaming state with per-client sessions for concurrent live viewers.
-        - Tuned jitter buffers and RTP pacing for stable playback over lossy WAN paths.
-
-    - slug: ota-firmware
-      title: Fleet OTA Firmware Infrastructure
-      org: eInfochips
-      context: Field cameras needed safe, recoverable updates across a growing deployed fleet
-      summary: >
-        Shipped staged OTA with verification and rollback so 1,000+ production cameras could
-        update without bricking.
       tier: featured
       tech:
         - C
         - C++
         - Embedded Linux
-        - SQLite3
-        - A/B partitions
-      highlights:
-        - Designed staged downloads, checksum validation, version gating, and post-update health checks.
-        - Added A/B partition switching and automated rollback on failed updates.
-        - Upgraded SQLite3 schemas and durable audit logs for fleet-wide rollout visibility.
-
-    - slug: cloud-video-recorder
-      title: Cloud Video Recorder
-      org: eInfochips
-      context: Cloud recording had to survive WAN blips without losing security-sensitive events
-      summary: >
-        Built RTSPS push from edge to cloud with encrypted transport, local buffering, and
-        entitlement-aware access across product lines.
-      tier: featured
-      tech:
-        - C++
-        - RTSPS
-        - TLS
-        - MQTT
-        - OpenSSL
-      highlights:
-        - Engineered event-based recording with pre/post buffers and a 30-second local fallback during outages.
-        - Collaborated with the cloud team on protocol, security, and timestamp handling for CVR ingest.
-        - Integrated MQTT-based fleet configuration and RBAC-style entitlements across 5+ feature domains.
-
-    - slug: onvif-platform
-      title: ONVIF Camera Platform
-      org: eInfochips
-      context: Third-party NVRs exposed edge-case API failures during certification cycles
-      summary: >
-        Hardened ONVIF G/S/T services and device APIs so 5+ camera SKUs interoperated cleanly
-        with major NVR/VMS suites.
-      tier: featured
-      tech:
-        - C
-        - C++
+        - POSIX threads
+        - TCP/IP
+        - UDP
+        - HTTP/HTTPS
+        - WebSockets
+        - ONVIF G/S/T
         - gSOAP
         - Lighttpd
+        - REST/SOAP
+        - TLS
+        - OpenSSL
+        - digest auth
         - SQLite3
-        - ONVIF
-      highlights:
-        - Enhanced 15+ ONVIF/WebSocket APIs with POSIX-threaded request handling and NVR integration fixes.
-        - Scaled SQLite3-backed user and entitlement data to 1M+ records using WAL mode and tuned indices.
-        - Consolidated XML/JSON utilities to cut config-related defects across a 7-person firmware team.
+        - JSON (cJSON)
+        - XML (libxml2)
+        - A/B partitioning
+      focuses:
+        - title: ONVIF & Device APIs
+          highlights:
+            - Enhanced 15+ ONVIF/WebSocket APIs backed by low-level device services including recording manager, network manager, and live stream manager that feed state into ONVIF responses.
+            - Debugged TCP CLOSE_WAIT socket buildup under sustained NVR sessions by tracing connection teardown and lifecycle handling in the service layer.
+            - Scaled SQLite3-backed user data to 1M+ records using WAL mode and tuned indices.
+        - title: Fleet OTA
+          highlights:
+            - Designed staged downloads, checksum validation, version gating, and post-update health checks.
+            - Added A/B slot switching with automated rollback and durable audit logs for rollout visibility.
+        - title: Multi-Sensor Architecture
+          highlights:
+            - Refactored settings, database access, and API routing around per-sensor indices instead of hard-coded series logic.
 
-    - slug: multi-sensor-refactor
-      title: Multi-Sensor Camera Architecture
+    - slug: edge-to-cloud-video
+      title: Edge-to-Cloud Video Platform
       org: eInfochips
-      context: Three camera series had diverged codepaths that slowed every new SKU integration
-      summary: >
-        Merged multi-series firmware into a shared, sensor-indexed architecture that made new
-        models faster to ship and easier to maintain.
       tier: featured
       tech:
         - C
         - C++
-        - SQLite3
         - Embedded Linux
-      highlights:
-        - Refactored settings, database access, and API routing around per-sensor indices instead of hard-coded series logic.
-        - Completed a major port on an aggressive timeline.
-
-    - slug: mqtt-config
-      title: MQTT Fleet Configuration
-      org: eInfochips
-      summary: >
-        Centralized device settings over MQTT so cloud apps could push validated configuration
-        to 4+ SKUs with transactional rollback on failure.
-      tier: production
-      tech:
+        - POSIX threads
+        - epoll/select
+        - TCP/IP
+        - UDP
+        - NAT
+        - STUN/TURN
+        - HTTP/HTTPS
+        - WebSockets
+        - RTSP/RTSPS
+        - Live555
+        - WebRTC
+        - libdatachannel
+        - RTP
+        - H.264
+        - FFmpeg
+        - TLS
+        - OpenSSL
+        - digest auth
         - MQTT
         - Mosquitto
-        - C
-        - C++
-        - JSON
-      highlights:
-        - Added schema validation, persistent storage, and synchronized state updates across product lines.
-        - Reduced misconfiguration incidents by making failed applies atomic rather than partial.
-
-    - slug: event-intelligence
-      title: Event Intelligence Pipeline
-      org: eInfochips
-      summary: >
-        Normalized motion and analytics events on-camera and published structured payloads for
-        downstream cloud search and NLP-based event discovery.
-      tier: production
-      tech:
-        - C
-        - C++
-        - JSON
-        - XML
-        - MQTT
-      highlights:
-        - Built a lightweight XML-to-JSON path and subscriber model with filtering and keepalive tuning.
-        - Enabled cloud teams to index device events without re-parsing legacy XML at scale.
+        - JSON (cJSON)
+        - XML (libxml2)
+      focuses:
+        - title: WebRTC Live View
+          highlights:
+            - Fixed FU-A fragmentation logic traced with Wireshark, cutting decoder frame drops to zero before an investor demo.
+            - Replaced global streaming state with per-client sessions and tuned jitter buffers for lossy WAN paths.
+        - title: Cloud Video Recorder
+          highlights:
+            - Built RTSPS push with encrypted transport, event-based recording, and a 30-second local fallback during WAN outages.
+            - Collaborated with the cloud team on protocol, security, and timestamp handling for CVR ingest.
+        - title: MQTT Fleet Configuration
+          highlights:
+            - Centralized validated device settings over MQTT across 4+ SKUs with transactional rollback on failure.
+            - Added schema validation and synchronized state updates to prevent partial misconfiguration applies.
+        - title: Event Intelligence
+          highlights:
+            - Normalized motion and analytics events on-camera and published structured JSON payloads for cloud search.
+            - Built a lightweight XML-to-JSON path with filtering and keepalive tuning for downstream indexing.
 
 - name: Systems & OS Projects
   projects:
@@ -203,8 +160,8 @@
       title: Autonomous Underwater Vehicle
       org: Nirma University
       summary: >
-        Led software for a university AUV with ROS perception, Jetson TX2 compute, and thruster
-        control under real underwater constraints.
+        Led software for a university AUV with ROS perception on Jetson TX2, microcontroller-linked
+        sensors, and thruster control under underwater lighting and timing constraints.
       tier: other
       tech:
         - ROS
@@ -213,8 +170,8 @@
         - Jetson TX2
         - PID
       highlights:
-        - Achieved ~90% vision detection accuracy and up to ~15× CUDA speedup on representative frames.
-        - Integrated camera, IMU, and pressure sensing with failsafe states for bench-tank missions.
+        - Built a ROS perception pipeline with OpenCV color/shape detection, morphological filtering, and contour analysis tuned for variable underwater lighting.
+        - Linked camera, IMU, and pressure sensing through a microcontroller to Jetson TX2; CUDA-accelerated image filters to keep thruster PID loops running in real time with failsafe states on sensor dropouts.
 
     - slug: drone-navigation
       title: Drone Navigation with On-Board CV
@@ -249,20 +206,25 @@
       highlights:
         - Modeled outcomes with ensemble and clustering methods; physical exercise moderated several negative correlations.
 
+- name: Algorithm Analysis & Formal Verification Projects
+  projects:
     - slug: lean4-research
-      title: Lean4 Formal Verification
+      title: Lean4 Theorem Proving & Formal Verification
       org: University at Buffalo
       summary: >
-        Formalized algorithm correctness proofs in Lean4 for divide-and-conquer,
-        dynamic-programming, and greedy algorithms, turning recurrence-heavy arguments
-        into reusable Mathlib libraries.
+        Interactive theorem proving in Lean4: formalizing algorithm correctness with machine-checked
+        proofs rather than pen-and-paper arguments, building reusable Mathlib libraries for teaching
+        and research.
       tier: other
       tech:
         - Lean4
         - Mathlib
+        - Dependent Types
+        - Theorem Proving
         - Formal Verification
       highlights:
-        - Covered divide-and-conquer algorithms, Masters Theorem framing, and proofs for Merge Sort and dynamic-programming classics.
+        - Formalized divide-and-conquer, dynamic-programming, and greedy algorithm families with correctness proofs and recurrence reasoning.
+        - Built reusable libraries for asymptotic notation and classic algorithms including Merge Sort and dynamic-programming staples.
 
 - name: Hardware Projects
   projects:

@@ -20,26 +20,17 @@
   end: Dec. 2024
   logo: /images/logos/einfochips.png
   relatedProjects:
-    - webrtc-streaming
-    - ota-firmware
-    - cloud-video-recorder
-    - onvif-platform
-    - multi-sensor-refactor
+    - linux-ip-camera-firmware
+    - edge-to-cloud-video
   projectSummaries:
-    - title: Linux IP Camera Firmware Platform
+    - title: IP Camera Firmware & Edge-to-Cloud Platform
       summary: >
         Production embedded Linux firmware for IP cameras across multiple SKUs. I joined
-        an in-flight program and grew into platform work spanning the device server,
-        live streaming, fleet updates for over a thousand deployed units, and a refactor
-        that unified three product lines into one multi-sensor codebase, along with
-        fixing bugs across the live system.
-    - title: Edge-to-Cloud Video Platform
-      summary: >
-        A follow-on program connecting those cameras to cloud applications for live view,
-        recording, fleet configuration, and event delivery. I led the edge streaming
-        and recording stack end to end, from stabilizing live view before a critical
-        release through multi-viewer support, secure cloud recording with outage
-        buffering, and on-camera event delivery for downstream search.
+        an in-flight program and grew into platform work spanning the device server, fleet
+        OTA for over a thousand deployed units, and a refactor that unified three product
+        lines into one multi-sensor codebase, then led the edge stack connecting those
+        cameras to cloud apps for live view, secure recording with outage buffering,
+        fleet configuration, and on-camera event delivery.
 
 - company: Krossmark Innovations
   location: Ahmedabad, India

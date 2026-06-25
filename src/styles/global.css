@@ -37,33 +37,29 @@ img {
 
 /* Masthead */
 .masthead {
-  max-width: var(--page-max-width);
-  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   padding: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
-.masthead__title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.masthead__title a {
-  color: var(--masthead-link);
-  text-decoration: none;
-}
-
-.masthead__title a:hover {
-  color: var(--text);
+.masthead__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1.25rem;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
 }
 
 .masthead__nav a {
   color: var(--masthead-link);
   text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .masthead__nav a:hover {
@@ -194,6 +190,10 @@ img {
   color: var(--text-muted);
 }
 
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
 /* Sections */
 .section-title {
   margin: var(--space-section) 0 var(--space-block);
@@ -202,6 +202,7 @@ img {
   font-size: 1.563em;
   font-weight: bold;
   line-height: 1.2;
+  scroll-margin-top: 4rem;
 }
 
 .section-title:first-child {
@@ -242,7 +243,7 @@ table.portfolio-table th {
   padding: 0.5em;
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 table.portfolio-table tr:last-child td {
@@ -291,6 +292,66 @@ table.portfolio-table th:last-child {
   max-height: 4.5rem;
 }
 
+.org-location--education {
+  margin-bottom: 0;
+}
+
+.education-details {
+  padding: 1rem 1.25rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.education-details .org-dates {
+  text-align: left;
+}
+
+.education-details > span {
+  display: block;
+}
+
+.education-dates {
+  margin-bottom: 0.35rem;
+}
+
+.education-degree {
+  line-height: 1.35;
+}
+
+.education-department {
+  color: var(--text-muted);
+  font-size: 0.92em;
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}
+
+.education-gpa {
+  font-weight: bold;
+  margin-top: 0.35rem;
+}
+
+.education-coursework {
+  color: var(--text-muted);
+  font-size: 0.92em;
+  line-height: 1.45;
+  margin-top: 0.35rem;
+}
+
+.education-honor {
+  color: var(--text-muted);
+  font-size: 0.92em;
+  margin-top: 0.15rem;
+}
+
+.education-links {
+  margin: 0.5rem 0 0;
+  font-size: 0.95em;
+}
+
+.education-links a + a {
+  margin-left: 0.75rem;
+}
+
 .org-name {
   display: block;
   font-size: 1em;
@@ -336,7 +397,7 @@ table.portfolio-table th:last-child {
 
 .portfolio-table--experience .col-content {
   padding: 1rem 1.25rem;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .col-meta strong {
@@ -391,6 +452,32 @@ table.portfolio-table th:last-child {
   font-size: 0.95em;
 }
 
+.project-focuses {
+  margin-top: 0.5em;
+}
+
+.project-focus {
+  margin-top: 0.65em;
+}
+
+.project-focus:first-child {
+  margin-top: 0.35em;
+}
+
+.project-focus-title {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.92em;
+  font-weight: bold;
+  line-height: 1.35;
+  margin-bottom: 0.2em;
+}
+
+.project-focus ul {
+  margin: 0.15em 0 0;
+  padding-left: 1.25em;
+}
+
 .project-links {
   margin-top: 0.25em;
 }
@@ -430,13 +517,8 @@ table.simple-table td {
   display: block;
 }
 
-/* Contact page */
-.contact-page {
-  max-width: var(--content-max-width);
-  margin: 2em auto;
-  padding: 0 1em 4em;
-}
-
-.contact-page p {
-  margin: 0 0 1em;
+/* Contact section */
+.contact-details {
+  margin: 0;
+  line-height: 1.75;
 }

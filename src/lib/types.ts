@@ -1,6 +1,7 @@
 export interface Profile {
   name: string;
   title: string;
+  organization?: string;
   tagline?: string;
   location: string;
   email: string;
@@ -41,8 +42,15 @@ export interface EducationEntry {
   start: string;
   end: string;
   details?: string;
+  coursework?: string[];
+  honor?: string;
   logo?: string;
   links?: { label: string; url: string }[];
+}
+
+export interface ProjectFocus {
+  title: string;
+  highlights: string[];
 }
 
 export interface ProjectEntry {
@@ -50,10 +58,11 @@ export interface ProjectEntry {
   title: string;
   org: string;
   context?: string;
-  summary: string;
+  summary?: string;
   tier: ProjectTier;
   tech: string[];
-  highlights: string[];
+  highlights?: string[];
+  focuses?: ProjectFocus[];
   links?: { label: string; url: string }[];
 }
 

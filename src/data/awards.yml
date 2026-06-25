@@ -1,13 +1,8 @@
-- title: Power Trainee Award, eInfochips Annual Award Ceremony
-  detail: >
-    2022. Only one person selected from 100+ trainees in the embedded software domain.
+- title: Power Trainee Award 2022, eInfochips
+  detail: Awarded to 1 of 100+ embedded software trainees.
 
-- title: Best Team Award, eInfochips Annual Award Ceremony
-  detail: >
-    2024. Only one team selected company-wide for fulfilling project requirements and
-    excelling on deliverables.
+- title: Best Team Award 2024, eInfochips
+  detail: Awarded to 1 team company-wide for delivery excellence.
 
 - title: Pat on the Back Award, eInfochips
-  detail: >
-    Recognized for a difficult, time-sensitive streaming fix (UDP RTP/H.264 packetization)
-    that needed deep protocol expertise and restored low-latency WebRTC before a critical demo.
+  detail: Awarded for a time-critical live streaming fix before a product demo.

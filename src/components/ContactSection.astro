@@ -1,0 +1,17 @@
+---
+import type { Profile } from '../lib/types';
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+---
+
+<h2 class="section-title" id="contact">Contact</h2>
+<p class="contact-details">
+  {profile.name}<br />
+  {profile.location}
+  <br />
+  Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+</p>

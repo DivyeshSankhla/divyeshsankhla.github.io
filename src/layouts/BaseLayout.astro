@@ -11,6 +11,15 @@ interface Props {
 const { title, description, profile } = Astro.props;
 const pageTitle = title ? `${title} | ${profile.name}` : profile.name;
 const pageDescription = description ?? profile.about[0]?.slice(0, 160) ?? '';
+
+const navSections = [
+  { label: 'About', href: '/#about' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Education', href: '/#education' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Recognition', href: '/#recognition' },
+  { label: 'Contact', href: '/#contact' },
+];
 ---
 
 <!doctype html>
@@ -35,11 +44,12 @@ const pageDescription = description ?? profile.about[0]?.slice(0, 160) ?? '';
   </head>
   <body>
     <header class="masthead">
-      <h1 class="masthead__title">
-        <a href="/">{profile.name}</a>
-      </h1>
-      <nav class="masthead__nav" aria-label="Main">
-        <a href="/contact/">Contact</a>
+      <nav class="masthead__nav" aria-label="Sections">
+        {
+          navSections.map((section) => (
+            <a href={section.href}>{section.label}</a>
+          ))
+        }
       </nav>
     </header>
     <slot />

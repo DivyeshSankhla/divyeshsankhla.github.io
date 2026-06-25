@@ -1,15 +1,42 @@
-- school: University at Buffalo, The State University of New York
+- school: University at Buffalo
   location: Buffalo, NY
   logo: /images/logos/ub.svg
-  degree: MS Computer Science and Engineering
+  degree: MS CSE
+  department: Department of Computer Science and Engineering
   start: Jan. 2025
   end: May 2026
   details: "GPA: 3.97/4.00"
+  coursework:
+    - Operating Systems
+    - Modern Network Concepts
+    - Computer Architecture
+    - Computer Security
+    - Algorithms Analysis & Design
+    - Data Intensive Computing
+    - Computer Vision & Image Processing
+    - Intro to Machine Learning
+  links:
+    - label: Transcript
+      url: https://drive.google.com/file/d/1inIwoGX0Uk0nLKGu1APZ7p57krjLhFnv/view?usp=sharing
 
 - school: Nirma University
   location: Ahmedabad, India
   logo: /images/logos/nirma.jpg
-  degree: B.Tech. Electronics and Communication Engineering
+  degree: B.Tech. ECE
+  department: Department of Electronics and Communication Engineering
   start: Jul. 2017
   end: Jun. 2021
-  details: "CPI: 7.31/10"
+  details: "CPI: 7.31/10.00"
+  coursework:
+    - Data Communication & Networking
+    - Embedded Systems
+    - Wireless Sensor Networks
+    - Modern Processor Architecture
+    - Digital System Design
+    - Microprocessors & Computer Architecture
+    - Data Structures
+  links:
+    - label: Degree
+      url: https://drive.google.com/file/d/1N0olGjSpDOkhweE4ODF9JjuI0vXfkSNN/view?usp=sharing
+    - label: Transcript
+      url: https://drive.google.com/file/d/1QEgL3gUyaUKV5ces83khRTJmkDwuib6m/view?usp=sharing

@@ -49,14 +49,34 @@ const sortedCategories = sortProjects(categories);
                   {project.context && (
                     <p class="project-context">{project.context}</p>
                   )}
-                  <p class="project-summary">{project.summary}</p>
+                  {project.summary && (
+                    <p class="project-summary">{project.summary}</p>
+                  )}
                   <span class="project-tech">{project.tech.join(', ')}</span>
-                  {project.highlights.length > 0 && (
-                    <ul>
-                      {project.highlights.map((item) => (
-                        <li>{item}</li>
+                  {project.focuses && project.focuses.length > 0 ? (
+                    <div class="project-focuses">
+                      {project.focuses.map((focus) => (
+                        <div class="project-focus">
+                          <span class="project-focus-title">{focus.title}</span>
+                          {focus.highlights.length > 0 && (
+                            <ul>
+                              {focus.highlights.map((item) => (
+                                <li>{item}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
                       ))}
-                    </ul>
+                    </div>
+                  ) : (
+                    project.highlights &&
+                    project.highlights.length > 0 && (
+                      <ul>
+                        {project.highlights.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    )
                   )}
                 </td>
               </tr>

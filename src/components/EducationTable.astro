@@ -27,26 +27,33 @@ const { entries } = Astro.props;
                   />
                 )}
                 <strong class="org-name">{entry.school}</strong>
-                <span class="org-location">{entry.location}</span>
-                <div class="org-role-block">
-                  <span class="org-dates">
-                    {entry.start} – {entry.end}
-                  </span>
-                  <span class="org-role">{entry.degree}</span>
-                  {entry.department && (
-                    <span class="org-detail">{entry.department}</span>
-                  )}
-                </div>
+                <span class="org-location org-location--education">{entry.location}</span>
               </div>
             </td>
-            <td class="col-content">
-              {entry.details && <p class="role-summary">{entry.details}</p>}
+            <td class="col-content education-details">
+              <span class="org-dates education-dates">
+                {entry.start} – {entry.end}
+              </span>
+              <span class="education-degree">{entry.degree}</span>
+              {entry.department && (
+                <span class="education-department">{entry.department}</span>
+              )}
+              {entry.details && <span class="education-gpa">{entry.details}</span>}
+              {entry.coursework && entry.coursework.length > 0 && (
+                <span class="education-coursework">
+                  Relevant coursework: {entry.coursework.join(', ')}
+                </span>
+              )}
+              {entry.honor && <span class="education-honor">{entry.honor}</span>}
               {entry.links && entry.links.length > 0 && (
-                <p class="project-links">
-                  {entry.links.map((link) => (
-                    <a href={link.url} target="_blank" rel="noopener noreferrer">
-                      {link.label}
-                    </a>
+                <p class="education-links">
+                  {entry.links.map((link, index) => (
+                    <>
+                      {index > 0 && ' '}
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        {link.label}
+                      </a>
+                    </>
                   ))}
                 </p>
               )}

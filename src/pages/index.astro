@@ -6,6 +6,7 @@ import ExperienceTable from '../components/ExperienceTable.astro';
 import EducationTable from '../components/EducationTable.astro';
 import ProjectSection from '../components/ProjectSection.astro';
 import Recognition from '../components/Recognition.astro';
+import ContactSection from '../components/ContactSection.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import {
   profile,
@@ -24,8 +25,8 @@ import {
     <main class="main">
       <HeroQuote text={profile.quote.text} author={profile.quote.author} />
 
-      <section class="about">
-        <h2 class="section-title" id="about-me">About Me</h2>
+      <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
         {profile.about.map((paragraph) => <p>{paragraph}</p>)}
       </section>
 
@@ -40,6 +41,8 @@ import {
         </a>{' '}
         (last updated: {profile.cv.lastUpdated})
       </p>
+
+      <ContactSection profile={profile} />
     </main>
   </div>
   <ScrollToTop />

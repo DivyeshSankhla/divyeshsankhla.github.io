@@ -1,14 +1,15 @@
 name: Divyesh Sankhla
 title: Embedded Software Engineer
+organization: University at Buffalo
 location: Buffalo, NY
 email: divyeshsankhla@gmail.com
 phone: "+1 716-247-3926"
 github: https://github.com/divyeshsankhla
 linkedin: https://linkedin.com/in/divyeshsankhla
-avatar: /images/profile.svg
+avatar: /images/profile.jpg
 quote:
-  text: "What I cannot create, I do not understand."
-  author: Richard Feynman
+  text: "Weeks of programming can save you hours of planning."
+  author: Every senior dev, eventually
 about:
   - >
     Hello there, and thanks for stopping by. I work on embedded Linux where software
