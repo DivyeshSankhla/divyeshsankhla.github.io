@@ -1,6 +1,5 @@
 name: Divyesh Sankhla
 title: Embedded Software Engineer
-organization: University at Buffalo
 location: Buffalo, NY
 email: divyeshsankhla@gmail.com
 phone: "+1 716-247-3926"
@@ -23,13 +22,13 @@ about:
     a socket misbehaved, I was usually in gdb, dmesg, or a Wireshark trace before
     trusting another log line.
   - >
-    I'm at the University at Buffalo now (MS CSE), filling in the theory side through
-    operating systems coursework and formal verification research. On my own time I've
-    also been climbing down the stack: following reset-to-kernel boot in QEMU, building
-    Linux drivers that wire peripherals into userspace, working through scheduling and
-    syscalls in the Pintos kernel, and getting Zephyr threads and ISRs to cooperate
-    without surprises. The sections below cover both shipped production work and that
-    systems-level practice. Happy to talk if any of it lines up with what you're building.
+    I recently graduated from the University at Buffalo (MS CSE), where I filled in the
+    theory side through operating systems coursework and formal verification research.
+    On my own time I've also been climbing down the stack: following reset-to-kernel boot
+    in QEMU, building Linux drivers that wire peripherals into userspace, working through
+    scheduling and syscalls in the Pintos kernel, and getting Zephyr threads and ISRs to
+    cooperate without surprises. The sections below cover both shipped production work and
+    that systems-level practice. Happy to talk if any of it lines up with what you're building.
 cv:
   path: /files/cv.pdf
   lastUpdated: June 2025

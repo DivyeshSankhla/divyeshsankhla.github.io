@@ -32,9 +32,14 @@ const sortedCategories = sortProjects(categories);
             {category.projects.map((project) => (
               <tr>
                 <td class="col-meta">
-                  <strong>{project.title}</strong>
-                  <br />
-                  <span class="muted">{project.org}</span>
+                  <div class="project-meta">
+                    <strong class="project-meta__title">{project.title}</strong>
+                    <span class="project-meta__org">
+                      {project.org === 'Personal'
+                        ? 'Personal'
+                        : `Organization: ${project.org}`}
+                    </span>
+                  </div>
                   {project.links && project.links.length > 0 && (
                     <p class="project-links">
                       {project.links.map((link) => (

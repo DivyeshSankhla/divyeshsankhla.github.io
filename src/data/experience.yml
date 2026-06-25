@@ -8,7 +8,7 @@
     - title: Lean4 Formal Verification for Algorithm Analysis
       summary: >
         A research program at UB to formalize algorithm analysis for teaching and
-        research. I develop Lean4 and Mathlib libraries and correctness proofs for
+        research. I developed Lean4 and Mathlib libraries and correctness proofs for
         asymptotic notation, recurrences, and classic algorithm families including
         divide-and-conquer, dynamic programming, and greedy methods, so verified
         results can be reused instead of rebuilt each term.
