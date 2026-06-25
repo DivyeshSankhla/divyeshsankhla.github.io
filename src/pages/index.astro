@@ -30,17 +30,17 @@ import {
         {profile.about.map((paragraph) => <p>{paragraph}</p>)}
       </section>
 
-      <ExperienceTable entries={experience} />
-      <EducationTable entries={education} />
-      <ProjectSection categories={projects} />
-      <Recognition awards={awards} publications={publications} volunteer={volunteer} />
-
       <p class="cv-link">
         <a href={profile.cv.path} target="_blank" rel="noopener noreferrer">
           Curriculum Vitae
         </a>{' '}
         (last updated: {profile.cv.lastUpdated})
       </p>
+
+      <ExperienceTable entries={experience} />
+      <EducationTable entries={education} />
+      <ProjectSection categories={projects} />
+      <Recognition awards={awards} publications={publications} volunteer={volunteer} />
 
       <ContactSection profile={profile} />
     </main>
