@@ -154,6 +154,81 @@
         - Used DEVICE_DT_DEFINE bindings with priority-based scheduling and timing analysis.
         - Measured interrupt-to-deferred-work latency and basic sleep/wakeup power behavior.
 
+- name: Networking Projects
+  projects:
+    - slug: socket-chat
+      title: Socket-Based Chat Application
+      org: University at Buffalo
+      summary: >
+        Single-threaded TCP chat server built for UB's Modern Network Concepts course, using
+        select()-based I/O multiplexing instead of a thread-per-client model.
+      tier: academic
+      tech:
+        - C
+        - C++
+        - TCP/IP
+        - POSIX sockets
+        - select
+      highlights:
+        - Implemented login and registration, direct messages, broadcast, user blocking, and offline buffering behind a CLI command shell.
+        - Built message framing, per-client state machines, and durable queues for buffered delivery on one server thread.
+
+    - slug: ns3-network-simulation
+      title: Network Simulation and TCP Congestion Analysis
+      org: University at Buffalo
+      summary: >
+        NS-3 coursework for Modern Network Concepts comparing UDP behavior, routed LANs,
+        Wi-Fi mobility, and TCP Reno under clean versus lossy links.
+      tier: academic
+      tech:
+        - NS-3
+        - TCP Reno
+        - UDP
+        - Python
+        - Ubuntu
+        - Wi-Fi
+      highlights:
+        - Built point-to-point, CSMA, mobility, and mesh scenarios to study routing, ARP delay, fragmentation, and end-to-end latency.
+        - Traced Reno window evolution across loss profiles, from slow start and congestion avoidance through fast retransmit and timeout recovery.
+
+- name: Computer Architecture Projects
+  projects:
+    - slug: gem5-cache-study
+      title: Cache Hierarchy Performance Study
+      org: University at Buffalo
+      summary: >
+        Computer architecture coursework using gem5 to see how L1/L2 size, line size, and
+        associativity shift CPI and cache hit rates on benchmark workloads.
+      tier: academic
+      tech:
+        - gem5
+        - Python
+        - Computer Architecture
+        - Cache hierarchy
+        - CPI analysis
+      highlights:
+        - Swept cache configurations while tracking L1 data, L1 instruction, and L2 hit rates alongside execution trends.
+        - Related performance swings to spatial and temporal locality, conflict misses, capacity limits, and diminishing returns.
+
+    - slug: single-cycle-processor
+      title: 16-bit Single-Cycle Processor
+      org: University at Buffalo
+      summary: >
+        End-to-end RTL for a 16-bit single-cycle CPU built in Verilog for computer
+        architecture coursework, covering fetch, decode, execute, memory, and write-back
+        in one clock per instruction.
+      tier: academic
+      tech:
+        - Verilog
+        - SystemVerilog
+        - RTL design
+        - Computer Architecture
+        - Vivado
+        - Basys-3 FPGA
+      highlights:
+        - Integrated the program counter, register file, ALU, control unit, instruction and data memories, sign extension, multiplexers, and write-back path.
+        - Verified arithmetic, memory, and branch behavior with module and full-processor testbenches, then validated the flow on a Basys-3 board in Vivado.
+
 - name: Robotics Projects
   projects:
     - slug: auv
